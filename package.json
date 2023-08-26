@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://alta-fe15-imambaihaqi.github.io/todo-list-app/",
+  "homepage": "https://ALTA-FE15-ImamBaihaqi.github.io/todo-list-app/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
