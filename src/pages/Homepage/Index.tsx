@@ -90,12 +90,14 @@ const HomePage = () => {
   }, []);
 
   return (
-    <section className="bg-slate-100 w-full h-screen flex flex-col">
+    <section className=" w-full h-screen flex flex-col">
       <div className="mx-auto my-2">
-        <h1 className="text-3xl font-bold text-slate-800">TODO APP</h1>
+        <h1 className="text-3xl font-bold text-slate-800 md:text-center">
+          TODO APP
+        </h1>
       </div>
-      <div className="md:mx-auto sm:mx-0 sm:w-full md:w-[950px] shadow">
-        <p className="bg-stone-200 font-semibold py-1 pl-3 text-slate-600 ">
+      <div className="md:mx-auto sm:mx-0 sm:w-full md:w-[950px] shadow bg-slate-100">
+        <p className="bg-stone-200 font-semibold py-1 pl-3 text-slate-700 ">
           Add Task
         </p>
         <div className="px-3 py-2 ">
@@ -107,27 +109,27 @@ const HomePage = () => {
             value={addTask}
             onChange={(e) => setAddTask(e.target.value)}
           />
-          <Input
-            id="description"
+          <textarea
             name="description"
-            type="text"
+            id="description"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          />
+            className="shadow rounded my-1 w-full h-16 py-2 px-3 text-slate-700 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500"
+          ></textarea>
           <Button id="submit" label="Submit" onClick={handleSubmit} />
         </div>
         <div className="mt-3">
-          <p className="bg-stone-200 font-semibold py-1 pl-3 text-slate-600">
+          <p className="bg-stone-200 font-semibold py-1 pl-3 text-slate-700">
             Task
           </p>
           <ul>
             {tasks.map((item: any, index) => (
               <li className="flex justify-between py-2 px-3 " key={index}>
-                <span>{item.content}</span>
-                <div>
+                <div className="w-full p-2">{item.content}</div>
+                <div className=" flex flex-col md:flex-row">
                   <button
-                    className="w-24 my-1 bg-green-600 text-white rounded hover:bg-green-700 font-semibold h-8 mx-1"
+                    className="w-24 bg-green-600 text-white rounded hover:bg-green-700 font-semibold h-8 m-1"
                     onClick={() =>
                       navigate(`/details/${item.id}`, {
                         state: {
@@ -141,7 +143,7 @@ const HomePage = () => {
                   </button>
                   <button
                     id={`delete-${item.id}`}
-                    className="w-24 bg-red-600 text-white rounded hover:bg-red-700 font-semibold h-8 mx-1"
+                    className="w-24 bg-red-600 text-white rounded hover:bg-red-700 font-semibold h-8 m-1"
                     onClick={() => handleDelete(item.id)}
                   >
                     Delete

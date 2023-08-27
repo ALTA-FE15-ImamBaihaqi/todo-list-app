@@ -1,5 +1,3 @@
-import Button from '../../components/Button';
-
 import Swal from 'sweetalert2';
 
 import axios from 'axios';
@@ -82,51 +80,71 @@ const DetailTodo = () => {
   }, [id]);
 
   return (
-    <section className="bg-slate-100 w-full h-screen flex flex-col">
+    <section className=" w-full flex flex-col">
       <h1 className="text-slate-800 text-3xl font-bold mx-auto py-3">
         Detail Todo
       </h1>
-      <div className="mx-auto mt-24 md:w-[500px] bg-slate-50 shadow-lg rounded p-4">
+      <div className="mx-auto mt-24 w-full md:w-[500px] bg-slate-100 shadow-lg rounded p-4">
         <div>
           <p className="text-lg font-semibold mb-2">Task Content:</p>
           {isEditMode ? (
             <input
               type="text"
-              className="w-full px-3 py-2 border rounded"
+              className="w-full px-3 py-2 rounded"
               value={editedContent}
               onChange={(e) => setEditedContent(e.target.value)}
             />
           ) : (
-            <p className=" bg-white shadow rounded py-2 px-3">{taskContent}</p>
+            <p className="w-full bg-white shadow rounded py-2 px-3">
+              {taskContent}
+            </p>
           )}
         </div>
         <div className="mt-3">
           <p className="text-lg font-semibold mb-2">Description:</p>
           {isEditMode ? (
-            <input
-              type="text"
-              className="w-full px-3 py-2 border rounded"
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Description"
               value={editedDescription}
               onChange={(e) => setEditedDescription(e.target.value)}
-            />
+              className="shadow rounded w-full h-16 py-2 px-3 text-slate-700 "
+            ></textarea>
           ) : (
-            <p className=" bg-white shadow rounded py-2 px-3">{description}</p>
+            <p className=" bg-white shadow rounded py-2 px-3 h-16">
+              {description}
+            </p>
           )}
         </div>
-        <div className="mt-3">
+        <div className="mt-3 ">
           {isEditMode ? (
-            <div>
-              <Button id="save" label="Save" onClick={handleSave} />
+            <div className="-mt-1 -mb-0.5">
+              <button
+                id="save"
+                onClick={handleSave}
+                className="w-20 bg-green-700 text-white rounded hover:bg-green-500 font-semibold h-8 my-1 ml-2"
+              >
+                Save
+              </button>
               <button
                 id="cancel"
                 onClick={handleCancel}
-                className="w-24 bg-red-600 text-white rounded hover:bg-red-700 font-semibold h-8 mx-1"
+                className="w-20 bg-red-700 text-white rounded hover:bg-red-500 font-semibold h-8 my-1 ml-2"
               >
                 Cancel
               </button>
             </div>
           ) : (
-            <Button id="edit" label="Edit" onClick={handleToggleEdit} />
+            <div>
+              <button
+                id="edit"
+                onClick={handleToggleEdit}
+                className="w-20 bg-green-700 text-white rounded hover:bg-green-500 font-semibold h-8 my-1 ml-2"
+              >
+                Edit
+              </button>
+            </div>
           )}
         </div>
       </div>
